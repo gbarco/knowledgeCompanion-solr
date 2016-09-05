@@ -1,582 +1,142 @@
+# Supported tags and respective `Dockerfile` links
 
+-       [`6.2.0`, `6.2`, `6`, `latest` (*6.2/Dockerfile*)](https://github.com/docker-solr/docker-solr/blob/92b9a6d8415979f5a7e6d6ad4dc7df8856604d12/6.2/Dockerfile)
+-       [`6.1.0`, `6.1` (*6.1/Dockerfile*)](https://github.com/docker-solr/docker-solr/blob/43af88ba395a263785177ad04d75a5e8f0ec6401/6.1/Dockerfile)
+-       [`6.0.0`, `6.0` (*6.0/Dockerfile*)](https://github.com/docker-solr/docker-solr/blob/43af88ba395a263785177ad04d75a5e8f0ec6401/6.0/Dockerfile)
+-       [`5.5.2`, `5.5`, `5` (*5.5/Dockerfile*)](https://github.com/docker-solr/docker-solr/blob/a0da4f3103dc01bc99ca8fca29535f2964a3a294/5.5/Dockerfile)
+-       [`5.4.1`, `5.4` (*5.4/Dockerfile*)](https://github.com/docker-solr/docker-solr/blob/43af88ba395a263785177ad04d75a5e8f0ec6401/5.4/Dockerfile)
+-       [`5.3.2`, `5.3` (*5.3/Dockerfile*)](https://github.com/docker-solr/docker-solr/blob/43af88ba395a263785177ad04d75a5e8f0ec6401/5.3/Dockerfile)
 
+For each of these there are variants based on the Alpine image, .e.g `6.0-alpine`.
 
+For more information about this image and its history, please see [the relevant manifest file (`library/solr`)](https://github.com/docker-library/official-images/blob/master/library/solr). This image is updated via pull requests to [the `docker-solr/docker-solr` GitHub repo](https://github.com/docker-solr/docker-solr).
 
-<!DOCTYPE html>
-<html lang="en" class="">
-  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
-    <meta charset='utf-8'>
-    
+For detailed information about the virtual/transfer sizes and individual layers of each of the above supported tags, please see [the `solr/tag-details.md` file](https://github.com/docker-library/docs/blob/master/solr/tag-details.md) in [the `docker-library/docs` GitHub repo](https://github.com/docker-library/docs).
 
-    <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/frameworks-bbde3b2f5b4398fc37486b7dd931c73ffdc56c8ba3a9e5dfc2852dffe0d43f06.css" media="all" rel="stylesheet" />
-    <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/github-49e12aa399c7093f791b457948c9194c4f4042e704130b86cdfe89a06a81a41c.css" media="all" rel="stylesheet" />
-    
-    
-    <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/site-becbb68a5e0ae3f94214b9e9edea2c49974f6d60b9eae715b70e5d017ff1b935.css" media="all" rel="stylesheet" />
-    
+# What is Solr?
 
-    <link as="script" href="https://assets-cdn.github.com/assets/frameworks-88471af1fec40ff9418efbe2ddd15b6896af8d772f8179004c254dffc25ea490.js" rel="preload" />
-    
-    <link as="script" href="https://assets-cdn.github.com/assets/github-05df41359b5de0c6f4646e1c76a4c69e9789b6f322d62ddea78fe81d78e234a2.js" rel="preload" />
+Solr is highly reliable, scalable and fault tolerant, providing distributed indexing, replication and load-balanced querying, automated failover and recovery, centralized configuration and more. Solr powers the search and navigation features of many of the world's largest internet sites.
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Language" content="en">
-    <meta name="viewport" content="width=device-width">
-    
-    <title>knowledgeCompanion-solr/README.md at master · gbarco/knowledgeCompanion-solr · GitHub</title>
-    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
-    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
-    <meta property="fb:app_id" content="1401488693436528">
+Learn more on [Apache Solr homepage](http://lucene.apache.org/solr/) and in the [Apache Solr Reference Guide](https://www.apache.org/dyn/closer.cgi/lucene/solr/ref-guide/).
 
-      <meta content="https://avatars1.githubusercontent.com/u/961176?v=3&amp;s=400" name="twitter:image:src" /><meta content="@github" name="twitter:site" /><meta content="summary" name="twitter:card" /><meta content="gbarco/knowledgeCompanion-solr" name="twitter:title" /><meta content="knowledgeCompanion-solr - Solr Docker for knowledgeCompanion" name="twitter:description" />
-      <meta content="https://avatars1.githubusercontent.com/u/961176?v=3&amp;s=400" property="og:image" /><meta content="GitHub" property="og:site_name" /><meta content="object" property="og:type" /><meta content="gbarco/knowledgeCompanion-solr" property="og:title" /><meta content="https://github.com/gbarco/knowledgeCompanion-solr" property="og:url" /><meta content="knowledgeCompanion-solr - Solr Docker for knowledgeCompanion" property="og:description" />
-      <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
-    <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
-    <link rel="assets" href="https://assets-cdn.github.com/">
-    
-    <meta name="pjax-timeout" content="1000">
-    
-    <meta name="request-id" content="BEA1C30F:26A16:3625B18:57CCBA44" data-pjax-transient>
-
-    <meta name="msapplication-TileImage" content="/windows-tile.png">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="selected-link" value="repo_source" data-pjax-transient>
-
-    <meta name="google-site-verification" content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU">
-<meta name="google-site-verification" content="ZzhVyEFwb7w3e0-uOTltm8Jsck2F5StVihD0exw2fsA">
-    <meta name="google-analytics" content="UA-3769691-2">
-
-<meta content="collector.githubapp.com" name="octolytics-host" /><meta content="github" name="octolytics-app-id" /><meta content="BEA1C30F:26A16:3625B18:57CCBA44" name="octolytics-dimension-request_id" />
-<meta content="/&lt;user-name&gt;/&lt;repo-name&gt;/blob/show" data-pjax-transient="true" name="analytics-location" />
+> [wikipedia.org/wiki/Apache_Solr](https://en.wikipedia.org/wiki/Apache_Solr)
 
-
+![logo](https://raw.githubusercontent.com/docker-library/docs/master/solr/logo.png)
 
-  <meta class="js-ga-set" name="dimension1" content="Logged Out">
+# How to use this Docker image
 
+## Run Solr and index example data
 
+To run a single Solr server:
 
-        <meta name="hostname" content="github.com">
-    <meta name="user-login" content="">
+```console
+$ docker run --name my_solr -d -p 8983:8983 -t solr
+```
 
-        <meta name="expected-hostname" content="github.com">
-      <meta name="js-proxy-site-detection-payload" content="ZTNmY2U4NGJiNDAxN2M4ZjFlMDIyMGJkMDAxMTQzNzM1ZjhiM2E5M2RkZDRhNTUyYWY5OGI2Y2FmOWU2YmM0NHx7InJlbW90ZV9hZGRyZXNzIjoiMTkwLjE2MS4xOTUuMTUiLCJyZXF1ZXN0X2lkIjoiQkVBMUMzMEY6MjZBMTY6MzYyNUIxODo1N0NDQkE0NCIsInRpbWVzdGFtcCI6MTQ3MzAzNDgyMX0=">
+Then with a web browser go to `http://localhost:8983/` to see the Admin Console (adjust the hostname for your docker host).
 
+To use Solr, you need to create a "core", an index for your data. For example:
 
-      <link rel="mask-icon" href="https://assets-cdn.github.com/pinned-octocat.svg" color="#4078c0">
-      <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
+```console
+$ docker exec -it --user=solr my_solr bin/solr create_core -c gettingstarted
+```
 
-    <meta name="html-safe-nonce" content="052a4c16e7a8562f8da521526eee1c1021fd09d8">
-    <meta content="47f681cdff28545c9a257ae1522e679937aaa601" name="form-nonce" />
+In the web UI if you click on "Core Admin" you should now see the "gettingstarted" core.
 
-    <meta http-equiv="x-pjax-version" content="6c8eb8be756407faa6560ed048919620">
-    
+If you want to load some of the example data that is included in the container:
 
-      
-  <meta name="description" content="knowledgeCompanion-solr - Solr Docker for knowledgeCompanion">
-  <meta name="go-import" content="github.com/gbarco/knowledgeCompanion-solr git https://github.com/gbarco/knowledgeCompanion-solr.git">
-
-  <meta content="961176" name="octolytics-dimension-user_id" /><meta content="gbarco" name="octolytics-dimension-user_login" /><meta content="67374799" name="octolytics-dimension-repository_id" /><meta content="gbarco/knowledgeCompanion-solr" name="octolytics-dimension-repository_nwo" /><meta content="true" name="octolytics-dimension-repository_public" /><meta content="true" name="octolytics-dimension-repository_is_fork" /><meta content="42876393" name="octolytics-dimension-repository_parent_id" /><meta content="docker-solr/docker-solr" name="octolytics-dimension-repository_parent_nwo" /><meta content="42876393" name="octolytics-dimension-repository_network_root_id" /><meta content="docker-solr/docker-solr" name="octolytics-dimension-repository_network_root_nwo" />
-  <link href="https://github.com/gbarco/knowledgeCompanion-solr/commits/master.atom" rel="alternate" title="Recent Commits to knowledgeCompanion-solr:master" type="application/atom+xml">
-
-
-      <link rel="canonical" href="https://github.com/gbarco/knowledgeCompanion-solr/blob/master/README.md" data-pjax-transient>
-  </head>
-
-
-  <body class="logged-out  env-production  vis-public fork page-blob">
-    <div id="js-pjax-loader-bar" class="pjax-loader-bar"><div class="progress"></div></div>
-    <a href="#start-of-content" tabindex="1" class="accessibility-aid js-skip-to-content">Skip to content</a>
-
-    
-    
-    
-
-
-
-          <header class="site-header js-details-container" role="banner">
-  <div class="container-responsive">
-    <a class="header-logo-invertocat" href="https://github.com/" aria-label="Homepage" data-ga-click="(Logged out) Header, go to homepage, icon:logo-wordmark">
-      <svg aria-hidden="true" class="octicon octicon-mark-github" height="32" version="1.1" viewBox="0 0 16 16" width="32"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
-    </a>
-
-    <button class="btn-link float-right site-header-toggle js-details-target" type="button" aria-label="Toggle navigation">
-      <svg aria-hidden="true" class="octicon octicon-three-bars" height="24" version="1.1" viewBox="0 0 12 16" width="18"><path d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path></svg>
-    </button>
-
-    <div class="site-header-menu">
-      <nav class="site-header-nav site-header-nav-main">
-        <a href="/personal" class="js-selected-navigation-item nav-item nav-item-personal" data-ga-click="Header, click, Nav menu - item:personal" data-selected-links="/personal /personal">
-          Personal
-</a>        <a href="/open-source" class="js-selected-navigation-item nav-item nav-item-opensource" data-ga-click="Header, click, Nav menu - item:opensource" data-selected-links="/open-source /open-source">
-          Open source
-</a>        <a href="/business" class="js-selected-navigation-item nav-item nav-item-business" data-ga-click="Header, click, Nav menu - item:business" data-selected-links="/business /business/partners /business/features /business/customers /business">
-          Business
-</a>        <a href="/explore" class="js-selected-navigation-item nav-item nav-item-explore" data-ga-click="Header, click, Nav menu - item:explore" data-selected-links="/explore /trending /trending/developers /integrations /integrations/feature/code /integrations/feature/collaborate /integrations/feature/ship /explore">
-          Explore
-</a>      </nav>
-
-      <div class="site-header-actions">
-            <a class="btn btn-primary site-header-actions-btn" href="/join?source=header-repo" data-ga-click="(Logged out) Header, clicked Sign up, text:sign-up">Sign up</a>
-          <a class="btn site-header-actions-btn mr-2" href="/login?return_to=%2Fgbarco%2FknowledgeCompanion-solr%2Fblob%2Fmaster%2FREADME.md" data-ga-click="(Logged out) Header, clicked Sign in, text:sign-in">Sign in</a>
-      </div>
-
-        <nav class="site-header-nav site-header-nav-secondary">
-          <a class="nav-item" href="/pricing">Pricing</a>
-          <a class="nav-item" href="/blog">Blog</a>
-          <a class="nav-item" href="https://help.github.com">Support</a>
-          <a class="nav-item header-search-link" href="https://github.com/search">Search GitHub</a>
-              <div class="header-search scoped-search site-scoped-search js-site-search" role="search">
-  <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/gbarco/knowledgeCompanion-solr/search" class="js-site-search-form" data-scoped-search-url="/gbarco/knowledgeCompanion-solr/search" data-unscoped-search-url="/search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
-    <label class="form-control header-search-wrapper js-chromeless-input-container">
-      <div class="header-search-scope">This repository</div>
-      <input type="text"
-        class="form-control header-search-input js-site-search-focus js-site-search-field is-clearable"
-        data-hotkey="s"
-        name="q"
-        placeholder="Search"
-        aria-label="Search this repository"
-        data-unscoped-placeholder="Search GitHub"
-        data-scoped-placeholder="Search"
-        autocapitalize="off">
-    </label>
-</form></div>
-
-        </nav>
-    </div>
-  </div>
-</header>
-
-
-
-    <div id="start-of-content" class="accessibility-aid"></div>
-
-      <div id="js-flash-container">
-</div>
-
-
-    <div role="main">
-        <div itemscope itemtype="http://schema.org/SoftwareSourceCode">
-    <div id="js-repo-pjax-container" data-pjax-container>
-      
-<div class="pagehead repohead instapaper_ignore readability-menu experiment-repo-nav">
-  <div class="container repohead-details-container">
-
-    
-
-<ul class="pagehead-actions">
-
-  <li>
-      <a href="/login?return_to=%2Fgbarco%2FknowledgeCompanion-solr"
-    class="btn btn-sm btn-with-count tooltipped tooltipped-n"
-    aria-label="You must be signed in to watch a repository" rel="nofollow">
-    <svg aria-hidden="true" class="octicon octicon-eye" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"></path></svg>
-    Watch
-  </a>
-  <a class="social-count" href="/gbarco/knowledgeCompanion-solr/watchers"
-     aria-label="1 user is watching this repository">
-    1
-  </a>
-
-  </li>
-
-  <li>
-      <a href="/login?return_to=%2Fgbarco%2FknowledgeCompanion-solr"
-    class="btn btn-sm btn-with-count tooltipped tooltipped-n"
-    aria-label="You must be signed in to star a repository" rel="nofollow">
-    <svg aria-hidden="true" class="octicon octicon-star" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74z"></path></svg>
-    Star
-  </a>
-
-    <a class="social-count js-social-count" href="/gbarco/knowledgeCompanion-solr/stargazers"
-      aria-label="0 users starred this repository">
-      0
-    </a>
-
-  </li>
-
-  <li>
-      <a href="/login?return_to=%2Fgbarco%2FknowledgeCompanion-solr"
-        class="btn btn-sm btn-with-count tooltipped tooltipped-n"
-        aria-label="You must be signed in to fork a repository" rel="nofollow">
-        <svg aria-hidden="true" class="octicon octicon-repo-forked" height="16" version="1.1" viewBox="0 0 10 16" width="10"><path d="M8 1a1.993 1.993 0 0 0-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 0 0 2 1a1.993 1.993 0 0 0-1 3.72V6.5l3 3v1.78A1.993 1.993 0 0 0 5 15a1.993 1.993 0 0 0 1-3.72V9.5l3-3V4.72A1.993 1.993 0 0 0 8 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
-        Fork
-      </a>
-
-    <a href="/gbarco/knowledgeCompanion-solr/network" class="social-count"
-       aria-label="33 users are forked this repository">
-      33
-    </a>
-  </li>
-</ul>
-
-    <h1 class="public ">
-  <svg aria-hidden="true" class="octicon octicon-repo-forked" height="16" version="1.1" viewBox="0 0 10 16" width="10"><path d="M8 1a1.993 1.993 0 0 0-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 0 0 2 1a1.993 1.993 0 0 0-1 3.72V6.5l3 3v1.78A1.993 1.993 0 0 0 5 15a1.993 1.993 0 0 0 1-3.72V9.5l3-3V4.72A1.993 1.993 0 0 0 8 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
-  <span class="author" itemprop="author"><a href="/gbarco" class="url fn" rel="author">gbarco</a></span><!--
---><span class="path-divider">/</span><!--
---><strong itemprop="name"><a href="/gbarco/knowledgeCompanion-solr" data-pjax="#js-repo-pjax-container">knowledgeCompanion-solr</a></strong>
-
-    <span class="fork-flag">
-      <span class="text">forked from <a href="/docker-solr/docker-solr">docker-solr/docker-solr</a></span>
-    </span>
-</h1>
-
-  </div>
-  <div class="container">
-    
-<nav class="reponav js-repo-nav js-sidenav-container-pjax"
-     itemscope
-     itemtype="http://schema.org/BreadcrumbList"
-     role="navigation"
-     data-pjax="#js-repo-pjax-container">
-
-  <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
-    <a href="/gbarco/knowledgeCompanion-solr" aria-selected="true" class="js-selected-navigation-item selected reponav-item" data-hotkey="g c" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches /gbarco/knowledgeCompanion-solr" itemprop="url">
-      <svg aria-hidden="true" class="octicon octicon-code" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M9.5 3L8 4.5 11.5 8 8 11.5 9.5 13 14 8 9.5 3zm-5 0L0 8l4.5 5L6 11.5 2.5 8 6 4.5 4.5 3z"></path></svg>
-      <span itemprop="name">Code</span>
-      <meta itemprop="position" content="1">
-</a>  </span>
-
-
-  <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
-    <a href="/gbarco/knowledgeCompanion-solr/pulls" class="js-selected-navigation-item reponav-item" data-hotkey="g p" data-selected-links="repo_pulls /gbarco/knowledgeCompanion-solr/pulls" itemprop="url">
-      <svg aria-hidden="true" class="octicon octicon-git-pull-request" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
-      <span itemprop="name">Pull requests</span>
-      <span class="counter">0</span>
-      <meta itemprop="position" content="3">
-</a>  </span>
-
-
-
-
-  <a href="/gbarco/knowledgeCompanion-solr/pulse" class="js-selected-navigation-item reponav-item" data-selected-links="pulse /gbarco/knowledgeCompanion-solr/pulse">
-    <svg aria-hidden="true" class="octicon octicon-pulse" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M11.5 8L8.8 5.4 6.6 8.5 5.5 1.6 2.38 8H0v2h3.6l.9-1.8.9 5.4L9 8.5l1.6 1.5H14V8z"></path></svg>
-    Pulse
-</a>
-  <a href="/gbarco/knowledgeCompanion-solr/graphs" class="js-selected-navigation-item reponav-item" data-selected-links="repo_graphs repo_contributors /gbarco/knowledgeCompanion-solr/graphs">
-    <svg aria-hidden="true" class="octicon octicon-graph" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M16 14v1H0V0h1v14h15zM5 13H3V8h2v5zm4 0H7V3h2v10zm4 0h-2V6h2v7z"></path></svg>
-    Graphs
-</a>
-
-</nav>
-
-  </div>
-</div>
-
-<div class="container new-discussion-timeline experiment-repo-nav">
-  <div class="repository-content">
-
-    
-
-<a href="/gbarco/knowledgeCompanion-solr/blob/47c11e69172fdb71c8c1824e6b1b5eb64ce3ec13/README.md" class="d-none js-permalink-shortcut" data-hotkey="y">Permalink</a>
-
-<!-- blob contrib key: blob_contributors:v21:77cdde461fe01c6adf124cface6c8fb0 -->
-
-<div class="file-navigation js-zeroclipboard-container">
-  
-<div class="select-menu branch-select-menu js-menu-container js-select-menu float-left">
-  <button class="btn btn-sm select-menu-button js-menu-target css-truncate" data-hotkey="w"
-    
-    type="button" aria-label="Switch branches or tags" tabindex="0" aria-haspopup="true">
-    <i>Branch:</i>
-    <span class="js-select-button css-truncate-target">master</span>
-  </button>
-
-  <div class="select-menu-modal-holder js-menu-content js-navigation-container" data-pjax aria-hidden="true">
-
-    <div class="select-menu-modal">
-      <div class="select-menu-header">
-        <svg aria-label="Close" class="octicon octicon-x js-menu-close" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
-        <span class="select-menu-title">Switch branches/tags</span>
-      </div>
-
-      <div class="select-menu-filters">
-        <div class="select-menu-text-filter">
-          <input type="text" aria-label="Filter branches/tags" id="context-commitish-filter-field" class="form-control js-filterable-field js-navigation-enable" placeholder="Filter branches/tags">
-        </div>
-        <div class="select-menu-tabs">
-          <ul>
-            <li class="select-menu-tab">
-              <a href="#" data-tab-filter="branches" data-filter-placeholder="Filter branches/tags" class="js-select-menu-tab" role="tab">Branches</a>
-            </li>
-            <li class="select-menu-tab">
-              <a href="#" data-tab-filter="tags" data-filter-placeholder="Find a tag…" class="js-select-menu-tab" role="tab">Tags</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="branches" role="menu">
-
-        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
-
-
-            <a class="select-menu-item js-navigation-item js-navigation-open "
-               href="/gbarco/knowledgeCompanion-solr/blob/foreground-init/README.md"
-               data-name="foreground-init"
-               data-skip-pjax="true"
-               rel="nofollow">
-              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
-              <span class="select-menu-item-text css-truncate-target js-select-menu-filter-text">
-                foreground-init
-              </span>
-            </a>
-            <a class="select-menu-item js-navigation-item js-navigation-open "
-               href="/gbarco/knowledgeCompanion-solr/blob/issue22-entrypoint-expansion-mechanism/README.md"
-               data-name="issue22-entrypoint-expansion-mechanism"
-               data-skip-pjax="true"
-               rel="nofollow">
-              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
-              <span class="select-menu-item-text css-truncate-target js-select-menu-filter-text">
-                issue22-entrypoint-expansion-mechanism
-              </span>
-            </a>
-            <a class="select-menu-item js-navigation-item js-navigation-open "
-               href="/gbarco/knowledgeCompanion-solr/blob/issue28-wait-for-solr-max/README.md"
-               data-name="issue28-wait-for-solr-max"
-               data-skip-pjax="true"
-               rel="nofollow">
-              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
-              <span class="select-menu-item-text css-truncate-target js-select-menu-filter-text">
-                issue28-wait-for-solr-max
-              </span>
-            </a>
-            <a class="select-menu-item js-navigation-item js-navigation-open "
-               href="/gbarco/knowledgeCompanion-solr/blob/issue49-docs-userdataloading/README.md"
-               data-name="issue49-docs-userdataloading"
-               data-skip-pjax="true"
-               rel="nofollow">
-              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
-              <span class="select-menu-item-text css-truncate-target js-select-menu-filter-text">
-                issue49-docs-userdataloading
-              </span>
-            </a>
-            <a class="select-menu-item js-navigation-item js-navigation-open "
-               href="/gbarco/knowledgeCompanion-solr/blob/mak-prtest1/README.md"
-               data-name="mak-prtest1"
-               data-skip-pjax="true"
-               rel="nofollow">
-              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
-              <span class="select-menu-item-text css-truncate-target js-select-menu-filter-text">
-                mak-prtest1
-              </span>
-            </a>
-            <a class="select-menu-item js-navigation-item js-navigation-open selected"
-               href="/gbarco/knowledgeCompanion-solr/blob/master/README.md"
-               data-name="master"
-               data-skip-pjax="true"
-               rel="nofollow">
-              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
-              <span class="select-menu-item-text css-truncate-target js-select-menu-filter-text">
-                master
-              </span>
-            </a>
-        </div>
-
-          <div class="select-menu-no-results">Nothing to show</div>
-      </div>
-
-      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="tags">
-        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
-
-
-        </div>
-
-        <div class="select-menu-no-results">Nothing to show</div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-  <div class="btn-group float-right">
-    <a href="/gbarco/knowledgeCompanion-solr/find/master"
-          class="js-pjax-capture-input btn btn-sm"
-          data-pjax
-          data-hotkey="t">
-      Find file
-    </a>
-    <button aria-label="Copy file path to clipboard" class="js-zeroclipboard btn btn-sm zeroclipboard-button tooltipped tooltipped-s" data-copied-hint="Copied!" type="button">Copy path</button>
-  </div>
-  <div class="breadcrumb js-zeroclipboard-target">
-    <span class="repo-root js-repo-root"><span class="js-path-segment"><a href="/gbarco/knowledgeCompanion-solr"><span>knowledgeCompanion-solr</span></a></span></span><span class="separator">/</span><strong class="final-path">README.md</strong>
-  </div>
-</div>
-
-<include-fragment class="commit-tease" src="/gbarco/knowledgeCompanion-solr/contributors/master/README.md">
-  <div>
-    Fetching contributors&hellip;
-  </div>
-
-  <div class="commit-tease-contributors">
-    <img alt="" class="loader-loading float-left" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32-EAF2F5.gif" width="16" />
-    <span class="loader-error">Cannot retrieve contributors at this time</span>
-  </div>
-</include-fragment>
-<div class="file">
-  <div class="file-header">
-  <div class="file-actions">
-
-    <div class="btn-group">
-      <a href="/gbarco/knowledgeCompanion-solr/raw/master/README.md" class="btn btn-sm " id="raw-url">Raw</a>
-        <a href="/gbarco/knowledgeCompanion-solr/blame/master/README.md" class="btn btn-sm js-update-url-with-hash">Blame</a>
-      <a href="/gbarco/knowledgeCompanion-solr/commits/master/README.md" class="btn btn-sm " rel="nofollow">History</a>
-    </div>
-
-
-        <button type="button" class="btn-octicon disabled tooltipped tooltipped-nw"
-          aria-label="You must be signed in to make or propose changes">
-          <svg aria-hidden="true" class="octicon octicon-pencil" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M0 12v3h3l8-8-3-3-8 8zm3 2H1v-2h1v1h1v1zm10.3-9.3L12 6 9 3l1.3-1.3a.996.996 0 0 1 1.41 0l1.59 1.59c.39.39.39 1.02 0 1.41z"></path></svg>
-        </button>
-        <button type="button" class="btn-octicon btn-octicon-danger disabled tooltipped tooltipped-nw"
-          aria-label="You must be signed in to make or propose changes">
-          <svg aria-hidden="true" class="octicon octicon-trashcan" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M11 2H9c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1H2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1v9c0 .55.45 1 1 1h7c.55 0 1-.45 1-1V5c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 12H3V5h1v8h1V5h1v8h1V5h1v8h1V5h1v9zm1-10H2V3h9v1z"></path></svg>
-        </button>
-  </div>
-
-  <div class="file-info">
-      235 lines (155 sloc)
-      <span class="file-info-divider"></span>
-    10.1 KB
-  </div>
-</div>
-
-  
-  <div id="readme" class="readme blob instapaper_body">
-    <article class="markdown-body entry-content" itemprop="text"><h1><a id="user-content-supported-tags-and-respective-dockerfile-links" class="anchor" href="#supported-tags-and-respective-dockerfile-links" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Supported tags and respective <code>Dockerfile</code> links</h1>
-
-<ul>
-<li>      <a href="https://github.com/docker-solr/docker-solr/blob/92b9a6d8415979f5a7e6d6ad4dc7df8856604d12/6.2/Dockerfile"><code>6.2.0</code>, <code>6.2</code>, <code>6</code>, <code>latest</code> (<em>6.2/Dockerfile</em>)</a></li>
-<li>      <a href="https://github.com/docker-solr/docker-solr/blob/43af88ba395a263785177ad04d75a5e8f0ec6401/6.1/Dockerfile"><code>6.1.0</code>, <code>6.1</code> (<em>6.1/Dockerfile</em>)</a></li>
-<li>      <a href="https://github.com/docker-solr/docker-solr/blob/43af88ba395a263785177ad04d75a5e8f0ec6401/6.0/Dockerfile"><code>6.0.0</code>, <code>6.0</code> (<em>6.0/Dockerfile</em>)</a></li>
-<li>      <a href="https://github.com/docker-solr/docker-solr/blob/a0da4f3103dc01bc99ca8fca29535f2964a3a294/5.5/Dockerfile"><code>5.5.2</code>, <code>5.5</code>, <code>5</code> (<em>5.5/Dockerfile</em>)</a></li>
-<li>      <a href="https://github.com/docker-solr/docker-solr/blob/43af88ba395a263785177ad04d75a5e8f0ec6401/5.4/Dockerfile"><code>5.4.1</code>, <code>5.4</code> (<em>5.4/Dockerfile</em>)</a></li>
-<li>      <a href="https://github.com/docker-solr/docker-solr/blob/43af88ba395a263785177ad04d75a5e8f0ec6401/5.3/Dockerfile"><code>5.3.2</code>, <code>5.3</code> (<em>5.3/Dockerfile</em>)</a></li>
-</ul>
-
-<p>For each of these there are variants based on the Alpine image, .e.g <code>6.0-alpine</code>.</p>
-
-<p>For more information about this image and its history, please see <a href="https://github.com/docker-library/official-images/blob/master/library/solr">the relevant manifest file (<code>library/solr</code>)</a>. This image is updated via pull requests to <a href="https://github.com/docker-solr/docker-solr">the <code>docker-solr/docker-solr</code> GitHub repo</a>.</p>
-
-<p>For detailed information about the virtual/transfer sizes and individual layers of each of the above supported tags, please see <a href="https://github.com/docker-library/docs/blob/master/solr/tag-details.md">the <code>solr/tag-details.md</code> file</a> in <a href="https://github.com/docker-library/docs">the <code>docker-library/docs</code> GitHub repo</a>.</p>
-
-<h1><a id="user-content-what-is-solr" class="anchor" href="#what-is-solr" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What is Solr?</h1>
-
-<p>Solr is highly reliable, scalable and fault tolerant, providing distributed indexing, replication and load-balanced querying, automated failover and recovery, centralized configuration and more. Solr powers the search and navigation features of many of the world's largest internet sites.</p>
-
-<p>Learn more on <a href="http://lucene.apache.org/solr/">Apache Solr homepage</a> and in the <a href="https://www.apache.org/dyn/closer.cgi/lucene/solr/ref-guide/">Apache Solr Reference Guide</a>.</p>
-
-<blockquote>
-<p><a href="https://en.wikipedia.org/wiki/Apache_Solr">wikipedia.org/wiki/Apache_Solr</a></p>
-</blockquote>
-
-<p><a href="https://raw.githubusercontent.com/docker-library/docs/master/solr/logo.png" target="_blank"><img src="https://raw.githubusercontent.com/docker-library/docs/master/solr/logo.png" alt="logo" style="max-width:100%;"></a></p>
-
-<h1><a id="user-content-how-to-use-this-docker-image" class="anchor" href="#how-to-use-this-docker-image" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to use this Docker image</h1>
-
-<h2><a id="user-content-run-solr-and-index-example-data" class="anchor" href="#run-solr-and-index-example-data" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Run Solr and index example data</h2>
-
-<p>To run a single Solr server:</p>
-
-<div class="highlight highlight-text-shell-session"><pre>$ <span class="pl-s1">docker run --name my_solr -d -p 8983:8983 -t solr</span></pre></div>
-
-<p>Then with a web browser go to <code>http://localhost:8983/</code> to see the Admin Console (adjust the hostname for your docker host).</p>
-
-<p>To use Solr, you need to create a "core", an index for your data. For example:</p>
-
-<div class="highlight highlight-text-shell-session"><pre>$ <span class="pl-s1">docker <span class="pl-c1">exec</span> -it --user=solr my_solr bin/solr create_core -c gettingstarted</span></pre></div>
-
-<p>In the web UI if you click on "Core Admin" you should now see the "gettingstarted" core.</p>
-
-<p>If you want to load some of the example data that is included in the container:</p>
-
-<div class="highlight highlight-text-shell-session"><pre>$ <span class="pl-s1">docker <span class="pl-c1">exec</span> -it --user=solr my_solr bin/post -c gettingstarted example/exampledocs/manufacturers.xml</span></pre></div>
-
-<p>In the UI, find the "Core selector" popup menu and select the "gettingstarted" core, then select the "Query" menu item. This gives you a default search for <code>*:*</code> which returns all docs. Hit the "Execute Query" button, and you should see a few docs with data. Congratulations!</p>
-
-<h2><a id="user-content-single-command-demo" class="anchor" href="#single-command-demo" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Single-command demo</h2>
-
-<p>For convenience, there is a single command that starts Solr, creates a collection called "demo", and loads sample data into it:</p>
-
-<div class="highlight highlight-text-shell-session"><pre>$ <span class="pl-s1">docker run --name solr_demo -d -P solr solr-demo</span></pre></div>
-
-<h2><a id="user-content-loading-your-own-data" class="anchor" href="#loading-your-own-data" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Loading your own data</h2>
-
-<p>If you want load your own data, you'll have to make it available to the container, for example by copying it into the container:</p>
-
-<div class="highlight highlight-text-shell-session"><pre>$ <span class="pl-s1">docker cp <span class="pl-smi">$HOME</span>/mydata/mydata.xml my_solr:/opt/solr/mydata.xml</span>
-$ <span class="pl-s1">docker <span class="pl-c1">exec</span> -it --user=solr my_solr bin/post -c gettingstarted mydata.xml</span></pre></div>
-
-<p>or by using Docker host volumes:</p>
-
-<div class="highlight highlight-text-shell-session"><pre>$ <span class="pl-s1">docker run --name my_solr -d -p 8983:8983 -t -v <span class="pl-smi">$HOME</span>/mydata:/opt/solr/mydata solr</span>
-$ <span class="pl-s1">docker <span class="pl-c1">exec</span> -it --user=solr my_solr bin/solr create_core -c gettingstarted</span>
-$ <span class="pl-s1">docker <span class="pl-c1">exec</span> -it --user=solr my_solr bin/post -c gettingstarted mydata/mydata.xml</span></pre></div>
-
-<p>To learn more about Solr, see the <a href="https://cwiki.apache.org/confluence/display/solr/Apache+Solr+Reference+Guide">Apache Solr Reference Guide</a>.</p>
-
-<h2><a id="user-content-creating-cores" class="anchor" href="#creating-cores" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Creating Cores</h2>
-
-<p>In addition to the <code>docker exec</code> method explained above, you can create a core automatically at start time, in several ways.</p>
-
-<p>If you run:</p>
-
-<div class="highlight highlight-text-shell-session"><pre>$ <span class="pl-s1">docker run -d -P solr solr-create -c mycore</span></pre></div>
-
-<p>the container will:</p>
-
-<ul>
-<li>run Solr in the background, on the loopback interface</li>
-<li>wait for it to start</li>
-<li>run the "solr create" command with the arguments you passed</li>
-<li>stop the background Solr</li>
-<li>start Solr in the foreground</li>
-</ul>
-
-<p>You can combine this with mounted volumes to pass in core configuration from your host:</p>
-
-<div class="highlight highlight-text-shell-session"><pre>$ <span class="pl-s1">docker run -d -P -v <span class="pl-smi">$PWD</span>/myconfig:/myconfig solr solr-create -c mycore -d /myconfig</span></pre></div>
-
-<p>When using the <code>solr-create</code> command, Solr will log to the standard docker log (inspect with <code>docker logs</code>),
-and the collection creation will happen in the background and log to <code>/opt/docker-solr/init.log</code>.</p>
-
-<p>This first way closely mirrors the manual core creation steps and uses Solr's own tools to create the core,
-so should be reliable.</p>
-
-<p>The second way of creating a core at start time is using the <code>solr-precreate</code> command. This will create the core
+```console
+$ docker exec -it --user=solr my_solr bin/post -c gettingstarted example/exampledocs/manufacturers.xml
+```
+
+In the UI, find the "Core selector" popup menu and select the "gettingstarted" core, then select the "Query" menu item. This gives you a default search for `*:*` which returns all docs. Hit the "Execute Query" button, and you should see a few docs with data. Congratulations!
+
+## Single-command demo
+
+For convenience, there is a single command that starts Solr, creates a collection called "demo", and loads sample data into it:
+
+```console
+$ docker run --name solr_demo -d -P solr solr-demo
+```
+
+## Loading your own data
+
+If you want load your own data, you'll have to make it available to the container, for example by copying it into the container:
+
+```console
+$ docker cp $HOME/mydata/mydata.xml my_solr:/opt/solr/mydata.xml
+$ docker exec -it --user=solr my_solr bin/post -c gettingstarted mydata.xml
+```
+
+or by using Docker host volumes:
+
+```console
+$ docker run --name my_solr -d -p 8983:8983 -t -v $HOME/mydata:/opt/solr/mydata solr
+$ docker exec -it --user=solr my_solr bin/solr create_core -c gettingstarted
+$ docker exec -it --user=solr my_solr bin/post -c gettingstarted mydata/mydata.xml
+```
+
+To learn more about Solr, see the [Apache Solr Reference Guide](https://cwiki.apache.org/confluence/display/solr/Apache+Solr+Reference+Guide).
+
+## Creating Cores
+
+In addition to the `docker exec` method explained above, you can create a core automatically at start time, in several ways.
+
+If you run:
+
+```console
+$ docker run -d -P solr solr-create -c mycore
+```
+
+the container will:
+
+- run Solr in the background, on the loopback interface
+- wait for it to start
+- run the "solr create" command with the arguments you passed
+- stop the background Solr
+- start Solr in the foreground
+
+You can combine this with mounted volumes to pass in core configuration from your host:
+
+```console
+$ docker run -d -P -v $PWD/myconfig:/myconfig solr solr-create -c mycore -d /myconfig
+```
+
+When using the `solr-create` command, Solr will log to the standard docker log (inspect with `docker logs`),
+and the collection creation will happen in the background and log to `/opt/docker-solr/init.log`.
+
+This first way closely mirrors the manual core creation steps and uses Solr's own tools to create the core,
+so should be reliable.
+
+The second way of creating a core at start time is using the `solr-precreate` command. This will create the core
 in the filesystem before running Solr. You should pass it the core name, and optionally the directory to copy the
-config from (this defaults to Solr's built-in "basic_configs"). For example:</p>
+config from (this defaults to Solr's built-in "basic_configs"). For example:
 
-<div class="highlight highlight-text-shell-session"><pre>$ <span class="pl-s1">docker run -d -P solr solr-precreate mycore</span>
-$ <span class="pl-s1">docker run -d -P -v <span class="pl-smi">$PWD</span>/myconfig:/myconfig solr solr-precreate mycore /myconfig</span></pre></div>
+```console
+$ docker run -d -P solr solr-precreate mycore
+$ docker run -d -P -v $PWD/myconfig:/myconfig solr solr-precreate mycore /myconfig
+```
+This method stores the core in an intermediate subdirectory called "mycores". This allows you to use mounted
+volumes:
 
-<p>This method stores the core in an intermediate subdirectory called "mycores". This allows you to use mounted
-volumes:</p>
+```console
+$ mkdir mycores
+$ sudo chown 8983:8983 mycores
+$ docker run -d -P -v $PWD/mycores:/opt/solr/server/solr/mycores solr solr-precreate mycore
+```
 
-<div class="highlight highlight-text-shell-session"><pre>$ <span class="pl-s1">mkdir mycores</span>
-$ <span class="pl-s1">sudo chown 8983:8983 mycores</span>
-$ <span class="pl-s1">docker run -d -P -v <span class="pl-smi">$PWD</span>/mycores:/opt/solr/server/solr/mycores solr solr-precreate mycore</span></pre></div>
+This second way is quicker, easier to monitor because it logs to the docker log, and can fail immediately if something is wrong.
+But, because it makes assumptions about Solr's "basic_configs", future upstream changes could break that.
 
-<p>This second way is quicker, easier to monitor because it logs to the docker log, and can fail immediately if something is wrong.
-But, because it makes assumptions about Solr's "basic_configs", future upstream changes could break that.</p>
+The third way of creating a core at startup is to use the image extension mechanism explained in the next section.
 
-<p>The third way of creating a core at startup is to use the image extension mechanism explained in the next section.</p>
+## Using Docker Compose
 
-<h2><a id="user-content-using-docker-compose" class="anchor" href="#using-docker-compose" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using Docker Compose</h2>
+With Docker Compose you can create a Solr container with the index stored in a named data volume.
+Create a `docker-compose.yml` like:
 
-<p>With Docker Compose you can create a Solr container with the index stored in a named data volume.
-Create a <code>docker-compose.yml</code> like:</p>
-
-<pre><code>version: '2'
+```
+version: '2'
 services:
   solr:
     image: solr
@@ -590,170 +150,85 @@ services:
       - mycore
 volumes:
   data:
-</code></pre>
+```
 
-<p>and just run <code>docker-compose up</code>.</p>
+and just run `docker-compose up`.
 
-<h2><a id="user-content-extending-the-image" class="anchor" href="#extending-the-image" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Extending the image</h2>
+## Extending the image
 
-<p>The docker-solr image has an extension mechanism. At run time, before starting Solr, the container will execute scripts
-in the <code>/docker-entrypoint-initdb.d/</code> directory. You can add your own scripts there either by using mounted volumes
+The docker-solr image has an extension mechanism. At run time, before starting Solr, the container will execute scripts
+in the `/docker-entrypoint-initdb.d/` directory. You can add your own scripts there either by using mounted volumes
 or by using a custom Dockerfile. These scripts can for example copy a core directory with pre-loaded data for continuous
-integration testing, or modify the Solr configuration.</p>
+integration testing, or modify the Solr configuration.
 
-<p>Here is a simple example. With a <code>set-heap.sh</code> script like:</p>
+Here is a simple example. With a `set-heap.sh` script like:
 
-<div class="highlight highlight-text-shell-session"><pre><span class="pl-mo">#!/bin/bash</span>
-<span class="pl-mo">set -e</span>
-<span class="pl-mo">cp /opt/solr/bin/solr.in.sh /opt/solr/bin/solr.in.sh.orig</span>
-<span class="pl-mo">sed -e 's/SOLR_HEAP=".*"/SOLR_HEAP="1024m"/' &lt;/opt/solr/bin/solr.in.sh.orig &gt;/opt/solr/bin/solr.in.sh</span>
-<span class="pl-mo">grep '^SOLR_HEAP=' /opt/solr/bin/solr.in.sh</span></pre></div>
+```console
+#!/bin/bash
+set -e
+cp /opt/solr/bin/solr.in.sh /opt/solr/bin/solr.in.sh.orig
+sed -e 's/SOLR_HEAP=".*"/SOLR_HEAP="1024m"/' </opt/solr/bin/solr.in.sh.orig >/opt/solr/bin/solr.in.sh
+grep '^SOLR_HEAP=' /opt/solr/bin/solr.in.sh
+```
 
-<p>you can run:</p>
+you can run:
 
-<div class="highlight highlight-text-shell-session"><pre>$ <span class="pl-s1">docker run --name solr_heap1 -d -P -v <span class="pl-smi">$PWD</span>/docs/set-heap.sh:/docker-entrypoint-initdb.d/set-heap.sh solr</span>
-$ <span class="pl-s1">sleep 5</span>
-$ <span class="pl-s1">docker logs solr_heap1 <span class="pl-k">|</span> head</span>
-<span class="pl-mo">/opt/docker-solr/scripts/docker-entrypoint.sh: running /docker-entrypoint-initdb.d/set-heap.sh</span>
-<span class="pl-mo">SOLR_HEAP="1024m"</span>
-
-
-<span class="pl-mo">Starting Solr on port 8983 from /opt/solr/server</span></pre></div>
-
-<p>With this extension mechanism it can be useful to see the shell commands that are being executed by the <code>docker-entrypoint.sh</code>
-script in the docker log. To do that, set an environment variable using Docker's <code>-e VERBOSE=yes</code>.</p>
-
-<h2><a id="user-content-distributed-solr" class="anchor" href="#distributed-solr" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Distributed Solr</h2>
-
-<p>You can also run a distributed Solr configuration.</p>
-
-<p>The recommended and most flexible way to do that is to use Docker networking.
-See the <a href="https://github.com/docker-solr/docker-solr/blob/master/Docker-FAQ.md#can-i-run-zookeeper-and-solr-clusters-under-docker">Can I run ZooKeeper and Solr clusters under Docker</a> FAQ,
-and <a href="/gbarco/knowledgeCompanion-solr/blob/master/docs/docker-networking.md">this example</a>.</p>
-
-<p>You can also use legacy links, see the <a href="/gbarco/knowledgeCompanion-solr/blob/master/Docker-FAQ.md#can-i-run-zookeeper-and-solr-clusters-under-docker">Can I run ZooKeeper and Solr with Docker Links</a> FAQ.</p>
-
-<h1><a id="user-content-about-this-repository" class="anchor" href="#about-this-repository" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>About this repository</h1>
-
-<p>This repository is available on <a href="https://github.com/docker-solr/docker-solr">github.com/docker-solr/docker-solr</a>, and the official build is on the <a href="https://hub.docker.com/_/solr/">Docker Hub</a>.</p>
-
-<p>This repository is based on (and replaces) <code>makuk66/docker-solr</code>, and has been sponsored by <a href="http://www.lucidworks.com/">Lucidworks</a>.</p>
-
-<h1><a id="user-content-license" class="anchor" href="#license" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>License</h1>
-
-<p>Solr is licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.</p>
-
-<p>This repository is also licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.</p>
-
-<p>Copyright 2015 Martijn Koster</p>
-
-<p>Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
-
-<pre><code>      http://www.apache.org/licenses/LICENSE-2.0
-</code></pre>
-
-<p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-
-<h1><a id="user-content-supported-docker-versions" class="anchor" href="#supported-docker-versions" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Supported Docker versions</h1>
-
-<p>This image has been built and tested with Docker version 1.11.</p>
-
-<h1><a id="user-content-user-feedback" class="anchor" href="#user-feedback" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>User Feedback</h1>
-
-<h2><a id="user-content-issues" class="anchor" href="#issues" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Issues</h2>
-
-<p>Please report issues with this docker image on this <a href="https://github.com/docker-solr/docker-solr">Github project</a>.</p>
-
-<p>For general questions about Solr, see the <a href="http://lucene.apache.org/solr/resources.html#community">Community information</a>, in particular the solr-user mailing list.</p>
-
-<h2><a id="user-content-contributing" class="anchor" href="#contributing" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Contributing</h2>
-
-<p>If you want to contribute to Solr, see the <a href="http://lucene.apache.org/solr/resources.html#community">Solr Resources</a>.</p>
-</article>
-  </div>
-
-</div>
-
-<button type="button" data-facebox="#jump-to-line" data-facebox-class="linejump" data-hotkey="l" class="d-none">Jump to Line</button>
-<div id="jump-to-line" style="display:none">
-  <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="" class="js-jump-to-line-form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
-    <input class="form-control linejump-input js-jump-to-line-field" type="text" placeholder="Jump to line&hellip;" aria-label="Jump to line" autofocus>
-    <button type="submit" class="btn">Go</button>
-</form></div>
-
-  </div>
-  <div class="modal-backdrop js-touch-events"></div>
-</div>
+```console
+$ docker run --name solr_heap1 -d -P -v $PWD/docs/set-heap.sh:/docker-entrypoint-initdb.d/set-heap.sh solr
+$ sleep 5
+$ docker logs solr_heap1 | head
+/opt/docker-solr/scripts/docker-entrypoint.sh: running /docker-entrypoint-initdb.d/set-heap.sh
+SOLR_HEAP="1024m"
 
 
-    </div>
-  </div>
+Starting Solr on port 8983 from /opt/solr/server
+```
 
-    </div>
+With this extension mechanism it can be useful to see the shell commands that are being executed by the `docker-entrypoint.sh`
+script in the docker log. To do that, set an environment variable using Docker's `-e VERBOSE=yes`.
 
-        <div class="container site-footer-container">
-  <div class="site-footer" role="contentinfo">
-    <ul class="site-footer-links float-right">
-        <li><a href="https://github.com/contact" data-ga-click="Footer, go to contact, text:contact">Contact GitHub</a></li>
-      <li><a href="https://developer.github.com" data-ga-click="Footer, go to api, text:api">API</a></li>
-      <li><a href="https://training.github.com" data-ga-click="Footer, go to training, text:training">Training</a></li>
-      <li><a href="https://shop.github.com" data-ga-click="Footer, go to shop, text:shop">Shop</a></li>
-        <li><a href="https://github.com/blog" data-ga-click="Footer, go to blog, text:blog">Blog</a></li>
-        <li><a href="https://github.com/about" data-ga-click="Footer, go to about, text:about">About</a></li>
+## Distributed Solr
 
-    </ul>
+You can also run a distributed Solr configuration.
 
-    <a href="https://github.com" aria-label="Homepage" class="site-footer-mark" title="GitHub">
-      <svg aria-hidden="true" class="octicon octicon-mark-github" height="24" version="1.1" viewBox="0 0 16 16" width="24"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
-</a>
-    <ul class="site-footer-links">
-      <li>&copy; 2016 <span title="0.08827s from github-fe134-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
-        <li><a href="https://github.com/site/terms" data-ga-click="Footer, go to terms, text:terms">Terms</a></li>
-        <li><a href="https://github.com/site/privacy" data-ga-click="Footer, go to privacy, text:privacy">Privacy</a></li>
-        <li><a href="https://github.com/security" data-ga-click="Footer, go to security, text:security">Security</a></li>
-        <li><a href="https://status.github.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
-        <li><a href="https://help.github.com" data-ga-click="Footer, go to help, text:help">Help</a></li>
-    </ul>
-  </div>
-</div>
+The recommended and most flexible way to do that is to use Docker networking.
+See the [Can I run ZooKeeper and Solr clusters under Docker](https://github.com/docker-solr/docker-solr/blob/master/Docker-FAQ.md#can-i-run-zookeeper-and-solr-clusters-under-docker) FAQ,
+and [this example](docs/docker-networking.md).
 
+You can also use legacy links, see the [Can I run ZooKeeper and Solr with Docker Links](Docker-FAQ.md#can-i-run-zookeeper-and-solr-clusters-under-docker) FAQ.
 
+# About this repository
 
-    
+This repository is available on [github.com/docker-solr/docker-solr](https://github.com/docker-solr/docker-solr), and the official build is on the [Docker Hub](https://hub.docker.com/_/solr/).
 
-    <div id="ajax-error-message" class="ajax-error-message flash flash-error">
-      <svg aria-hidden="true" class="octicon octicon-alert" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8.865 1.52c-.18-.31-.51-.5-.87-.5s-.69.19-.87.5L.275 13.5c-.18.31-.18.69 0 1 .19.31.52.5.87.5h13.7c.36 0 .69-.19.86-.5.17-.31.18-.69.01-1L8.865 1.52zM8.995 13h-2v-2h2v2zm0-3h-2V6h2v4z"></path></svg>
-      <button type="button" class="flash-close js-flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
-        <svg aria-hidden="true" class="octicon octicon-x" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
-      </button>
-      You can't perform that action at this time.
-    </div>
+This repository is based on (and replaces) `makuk66/docker-solr`, and has been sponsored by [Lucidworks](http://www.lucidworks.com/).
 
+# License
 
-      <script crossorigin="anonymous" src="https://assets-cdn.github.com/assets/compat-40e365359d1c4db1e36a55be458e60f2b7c24d58b5a00ae13398480e7ba768e0.js"></script>
-      <script crossorigin="anonymous" src="https://assets-cdn.github.com/assets/frameworks-88471af1fec40ff9418efbe2ddd15b6896af8d772f8179004c254dffc25ea490.js"></script>
-      <script async="async" crossorigin="anonymous" src="https://assets-cdn.github.com/assets/github-05df41359b5de0c6f4646e1c76a4c69e9789b6f322d62ddea78fe81d78e234a2.js"></script>
-      
-      
-      
-      
-      
-      
-    <div class="js-stale-session-flash stale-session-flash flash flash-warn flash-banner d-none">
-      <svg aria-hidden="true" class="octicon octicon-alert" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8.865 1.52c-.18-.31-.51-.5-.87-.5s-.69.19-.87.5L.275 13.5c-.18.31-.18.69 0 1 .19.31.52.5.87.5h13.7c.36 0 .69-.19.86-.5.17-.31.18-.69.01-1L8.865 1.52zM8.995 13h-2v-2h2v2zm0-3h-2V6h2v4z"></path></svg>
-      <span class="signed-in-tab-flash">You signed in with another tab or window. <a href="">Reload</a> to refresh your session.</span>
-      <span class="signed-out-tab-flash">You signed out in another tab or window. <a href="">Reload</a> to refresh your session.</span>
-    </div>
-    <div class="facebox" id="facebox" style="display:none;">
-  <div class="facebox-popup">
-    <div class="facebox-content" role="dialog" aria-labelledby="facebox-header" aria-describedby="facebox-description">
-    </div>
-    <button type="button" class="facebox-close js-facebox-close" aria-label="Close modal">
-      <svg aria-hidden="true" class="octicon octicon-x" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
-    </button>
-  </div>
-</div>
+Solr is licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
 
-  </body>
-</html>
+This repository is also licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
 
+Copyright 2015 Martijn Koster
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+	      http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+# Supported Docker versions
+
+This image has been built and tested with Docker version 1.11.
+
+# User Feedback
+
+## Issues
+
+Please report issues with this docker image on this [Github project](https://github.com/docker-solr/docker-solr).
+
+For general questions about Solr, see the [Community information](http://lucene.apache.org/solr/resources.html#community), in particular the solr-user mailing list.
+
+## Contributing
+
+If you want to contribute to Solr, see the [Solr Resources](http://lucene.apache.org/solr/resources.html#community).
